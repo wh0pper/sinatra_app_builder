@@ -50,3 +50,5 @@ $ atom .
 ![Screenshot](img/enter_class_names.png)
 
 ![Screenshot](img/new_folder.png)
+
+####Thanks to Roger Yee and Misha Petrov

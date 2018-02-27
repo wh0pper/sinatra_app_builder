@@ -40,7 +40,7 @@ class Project
         FileUtils.cd "views"
           FileUtils.touch("index.erb")
             File.open("layout.erb", 'w') {|file| file.write(
-              "<!DOCTYPE html>\n<html>\n  <head>\n    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>\n    <link rel='stylesheet' href='../css/styles.css'>\n    <script type='text/javascript' src='../js/scripts.js'></script>\n    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>\n    <title>Insert Title</title>\n  </head>\n  <body> \n    <div class='container'>\n      <%= yield %>\n    </div>\n  </body> \n</html>")}
+              "<!DOCTYPE html>\n<html>\n  <head>\n    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>\n    <link rel='stylesheet' href='<%= url('../css/styles.css')%>'>\n    <script type='text/javascript' src='../js/scripts.js'></script>\n    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.js'></script>\n    <title>Insert Title</title>\n  </head>\n  <body> \n    <div class='container'>\n      <%= yield %>\n    </div>\n  </body> \n</html>")}
 
       FileUtils.cd ".."
       FileUtils.cd "config"
@@ -57,7 +57,7 @@ class Project
 
     @classes.each do |each_class|
       each_class = each_class.capitalize
-      file_contents = "#!/usr/bin/env ruby\n\nclass #{each_class} < ActiveRecord::Base\n\nend\n\n"
+      file_contents = "#!/usr/bin/env ruby\nclass #{each_class} < ActiveRecord::Base\nend"
       File.open("lib/#{each_class}.rb", 'w') { |file| file.write(file_contents) }
       File.open("spec/#{each_class}_spec.rb", 'w') { |file| file.write("require 'spec_helper'\n\ndescribe('#{each_class}'\) do\n  it(\"create new project\") do\n  expect().to(eq())\n   end\nend") }
       File.open('spec/spec_helper.rb', 'a') { |f|

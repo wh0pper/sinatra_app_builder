@@ -3,7 +3,7 @@
 
 
 
-Hello there! This script will make a skeleton for your next Ruby/Sinatra/Rake app, git-free. It was written by Jared Clemensen and Andrew Peterson during Week Four Ruby Track at Epicodus.
+Hello there! This script will make a skeleton for your next Ruby/Sinatra/Rake app, git-it-free! It was written by Jared Clemensen and Andrew Peterson during Week Four Ruby Track at Epicodus.
 
 Enjoy.
 

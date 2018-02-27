@@ -15,7 +15,6 @@ Enjoy.
 ```
 $ cd Desktop
 $ git clone https://github.com/ndrwptrsn/ActiveRecord_Setup_Script.git
-
 ```
 
 **Launch the Script** Navigate to the directory and run:
@@ -23,7 +22,6 @@ $ git clone https://github.com/ndrwptrsn/ActiveRecord_Setup_Script.git
 ```
 $ cd ActiveRecord_Setup_Script/
 $ ./launch.rb
-
 ```
 
 **Name your project** This will also be the name of your database. Use Upper\_Camel_Case with underscores.
@@ -31,15 +29,12 @@ $ ./launch.rb
 ```
 Enter project name:
 > Peanut_Butter_Sandwich
-
 ```
 
-**Name your classes** Add as many as you like (separate by spaces). Make them singular and use Upper\_Camel_Case.
-
+**Name your classes** Add as many as you like (separate by spaces). Make them singular and use Upper\_Camel_Case with underscores.
 ```
 Enter class names for primary .rb file
 > Peanut_Butter Banana Bread
-
 ```
 
 **Open your project** Navigate to the root directory you created and run:
@@ -48,7 +43,6 @@ Enter class names for primary .rb file
 $ cd ..
 $ cd Peanut_Butter_Sandwich
 $ atom .
-
 ```
 
 ![Screenshot](img/enter_project_name.png)

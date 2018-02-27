@@ -70,7 +70,7 @@ end
 
 puts "Enter project name: "
 project_name = gets.chomp
-puts "Enter class names for primary .rb file"
+puts "Enter class names for primary .rb file (classes separated by spaces, use UpperCamelCase, Singular Form)"
 classes = gets.chomp
 classes = classes.split(" ")
 project = Project.new(project_name, classes)

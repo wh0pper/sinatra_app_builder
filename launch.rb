@@ -72,8 +72,6 @@ class Project
     end
     File.open("spec/spec_helper.rb", 'a') {|file| file.puts("end")}
 
-
-
     File.open("app.rb", 'a') { |file| file.puts(
       "\n\nget('/') do\n  erb:index\nend\n\npost('/') do\n  erb:index\nend")}
 
@@ -82,7 +80,7 @@ end
 
 puts "Enter project name: "
 project_name = gets.chomp
-puts "Enter class names for primary .rb file (classes separated by spaces, use UpperCamelCase, Singular Form)"
+puts "Enter class names for primary .rb file "
 classes = gets.chomp
 classes = classes.split(" ")
 project = Project.new(project_name, classes)

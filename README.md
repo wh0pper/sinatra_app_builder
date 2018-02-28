@@ -1,11 +1,7 @@
-
 # Active Record Script
 
 
-
-Hello there! This script will make a skeleton for your next Ruby/Sinatra/Rake app, git-it-free! It was written by Jared Clemensen and Andrew Peterson during Week Four Ruby Track at Epicodus.
-
-Enjoy.
+This script will make a skeleton for your next Active Record app, git-it-free! It was written by Jared Clemensen, Roger Yee, and Andrew Peterson.
 
 
 ## Instructions
@@ -24,29 +20,24 @@ $ cd ActiveRecord_Setup_Script/
 $ ./launch.rb
 ```
 
-**Name your project** This will also be the name of your database. Use Upper\_Camel_Case with underscores.
+**Name your project** This will also be the name of your database.
 
 ```
 Enter project name:
-> Peanut_Butter_Sandwich
+> bloccbuster
 ```
 
 **Name your classes** Add as many as you like (separate by spaces). Make them singular and use Upper\_Camel_Case with underscores.
 ```
 Enter class names for primary .rb file
-> Peanut_Butter Banana Bread
+> Vhs Dvd Customer Rental
 ```
 
 **Open your project** Navigate to the root directory you created and run:
 
 ```
 $ cd ..
-$ cd Peanut_Butter_Sandwich
+$ cd bloccbuster
 $ atom .
 ```
-
-![Screenshot](img/enter_project_name.png)
-
-![Screenshot](img/enter_class_names.png)
-
-![Screenshot](img/new_folder.png)
+**Next Steps**

@@ -27,7 +27,7 @@ Enter project name:
 > bloccbuster
 ```
 
-**Name your classes** Add as many as you like (separate by spaces). Make them singular and use Upper\_Camel_Case with underscores.
+**Name your classes** Add as many as you like (separate by spaces). Make them singular.
 ```
 Enter class names for primary .rb file
 > Vhs Dvd Customer Rental
@@ -40,3 +40,4 @@ $ cd ..
 $ cd bloccbuster
 $ atom .
 ```
+**Code** You should now have a folder which contains a Active Record Skeleton on your Desktop. Enjoy!

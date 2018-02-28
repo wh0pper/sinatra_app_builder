@@ -70,6 +70,14 @@ class Project
     File.open("app.rb", 'a') { |file| file.puts(
       "\n\nget('/') do\n  erb:index\nend\n\npost('/') do\n  erb:index\nend")}
 
+    system "postgre"
+    system "rake db:create"
+    system "rake db:create_migration NAME=create_class_tables"
+
+    FileUtils.cd "db/migrate"
+    migration_file = Dir.glob("*")
+    # File.open(migration_file, 'w') {|file| file.write}
+
   end
 end
 

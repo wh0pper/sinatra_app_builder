@@ -40,4 +40,3 @@ $ cd ..
 $ cd bloccbuster
 $ atom .
 ```
-**Code** You should now have a folder on your Desktop which contains an Active Record Skeleton. Enjoy!

@@ -2,7 +2,7 @@
 require 'fileutils'
 
 class Project
-  def initialize(project_name, classes)
+  def initialize(project_name, classes, database_confirm)
     @project_name = project_name
     @classes = classes
   end
@@ -70,14 +70,16 @@ class Project
     File.open("app.rb", 'a') { |file| file.puts(
       "\n\nget('/') do\n  erb:index\nend\n\npost('/') do\n  erb:index\nend")}
 
-    system "postgre"
-    system "rake db:create"
-    system "rake db:create_migration NAME=create_class_tables"
 
-    FileUtils.cd "db/migrate"
-    migration_file = Dir.glob("*")
-    # File.open(migration_file, 'w') {|file| file.write}
+    if database_confirm
+      system "postgres"
+      system "rake db:create"
+      system "rake db:create_migration NAME=create_class_tables"
 
+      # FileUtils.cd "db/migrate"
+      # migration_file = Dir.glob("*").last
+      # File.open(migration_file, 'w') {|file| file.write("class CreateTasks < ActiveRecord::Migration\n  def change\n    create_table(:#{@classes.first}) do |t|\n      #table column info goes here\n\n    end\n  end\nend")}
+    end
   end
 end
 
@@ -86,5 +88,12 @@ project_name = gets.chomp
 puts "Enter class names for primary .rb file "
 classes = gets.chomp
 classes = classes.split(" ")
-project = Project.new(project_name, classes)
+puts = "Create corresponding database? y/n:"
+response = gets.chomp
+if response=='y'
+  database_confirm = true
+else
+  database_confirm = false
+end
+project = Project.new(project_name, classes, database_confirm)
 project.create

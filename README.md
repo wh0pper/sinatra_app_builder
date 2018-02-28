@@ -1,7 +1,7 @@
 # Active Record Script
 
 
-This script will make a skeleton for your next Active Record app, git-it-free! It was written by Jared Clemensen, Roger Yee, and Andrew Peterson.
+This script will make a skeleton for your next Active Record app, git-it-free! It was written by [**Jared Clemensen**](http://markdown-here.com), [**Roger Yee**](https://github.com/ryee926), and [**Andrew Peterson**](https://github.com/ndrwptrsn).
 
 
 ## Instructions
@@ -40,4 +40,3 @@ $ cd ..
 $ cd bloccbuster
 $ atom .
 ```
-**Next Steps**

@@ -24,16 +24,14 @@ class Project
         FileUtils.touch("js/scripts.js")
         FileUtils.mkdir("img")
       FileUtils.cd ".."
-      FileUtils.touch("Gemfile")
         File.open("Gemfile", 'w') { |file| file.write(
           "source 'https://rubygems.org'\n\ngem 'pg'\ngem 'sinatra'\ngem 'rspec'\ngem 'pry'\ngem 'sinatra-contrib', :require => 'sinatra/reloader'\ngem 'sinatra-activerecord'\ngem 'rake'")}
         system "bundle install"
         system "bundle update"
-      FileUtils.touch("app.rb")
+
         File.open("app.rb", 'w') { |file| file.write(
           "require('sinatra')\nrequire('sinatra/reloader')\nrequire('sinatra/activerecord')\nalso_reload('lib/**/*.rb')\nrequire('pry')\nrequire('pg')\n")}
 
-      FileUtils.touch("spec/#{@project_name}_integration_spec.rb")
         File.open("spec/#{@project_name}_integration_spec.rb", 'w') {|file| file.write(
           "require 'spec_helper'\n\nCapybara.app = Sinatra::Application\nset(:show_exceptions, false)\n\ndescribe '', {:type => :feature} do\n  it '' do\n    visit '/'\n    fill_in('', :with => '')\n    click_button('')\n    expect(page).to have_content('')\n  end\nend"
           )}
@@ -44,15 +42,12 @@ class Project
 
       FileUtils.cd ".."
       FileUtils.cd "config"
-      FileUtils.touch("database.yml")
         File.open("database.yml", 'w') {|file| file.write(
           "development:\n  adapter: postgresql\n  database: #{@project_name}_development\n\ntest:\n  adapter: postgresql\n  database: #{@project_name}_test"
           )}
       FileUtils.cd ".."
-      FileUtils.touch("Rakefile")
         File.open("Rakefile", 'w') {|file| file.write("require 'sinatra/activerecord'\nrequire 'sinatra/activerecord/rake'\n\nnamespace(:db) do\n  task(:load_config)\nend"
           )}
-      FileUtils.touch("spec/spec_helper.rb")
         File.open("spec/spec_helper.rb", 'w') {|file| file.write("ENV['RACK_ENV'] = 'test'\nrequire 'rspec' \nrequire 'pry'\nrequire 'pg'\n")}
 
     @classes.each do |each_class|

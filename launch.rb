@@ -35,7 +35,7 @@ class Project
 
       FileUtils.touch("spec/#{@project_name}_integration_spec.rb")
         File.open("spec/#{@project_name}_integration_spec.rb", 'w') {|file| file.write(
-          "require 'capybara/rspec'\nrequire './app'\nrequire 'pry'\nrequire 'spec_helper'\n\nCapybara.app = Sinatra::Application\nset(:show_exceptions, false)\n\ndescribe '', {:type => :feature} do\n  it '' do\n    visit '/'\n    fill_in('', :with => '')\n    click_button('')\n    expect(page).to have_content('')\n  end\nend"
+          "require 'spec_helper'\n\nCapybara.app = Sinatra::Application\nset(:show_exceptions, false)\n\ndescribe '', {:type => :feature} do\n  it '' do\n    visit '/'\n    fill_in('', :with => '')\n    click_button('')\n    expect(page).to have_content('')\n  end\nend"
           )}
         FileUtils.cd "views"
           FileUtils.touch("index.erb")
@@ -53,18 +53,30 @@ class Project
         File.open("Rakefile", 'w') {|file| file.write("require 'sinatra/activerecord'\nrequire 'sinatra/activerecord/rake'\n\nnamespace(:db) do\n  task(:load_config)\nend"
           )}
       FileUtils.touch("spec/spec_helper.rb")
-        File.open("spec/spec_helper.rb", 'w') {|file| file.write("ENV['RACK_ENV'] = 'test'\nrequire 'rspec' \nrequire 'pry'\nrequire 'pg'\n ")}
+        File.open("spec/spec_helper.rb", 'w') {|file| file.write("ENV['RACK_ENV'] = 'test'\nrequire 'rspec' \nrequire 'pry'\nrequire 'pg'\n")}
 
     @classes.each do |each_class|
       each_class = each_class.capitalize
       file_contents = "#!/usr/bin/env ruby\nclass #{each_class} < ActiveRecord::Base\nend"
       File.open("lib/#{each_class}.rb", 'w') { |file| file.write(file_contents) }
-      File.open("spec/#{each_class}_spec.rb", 'w') { |file| file.write("require 'spec_helper'\n\ndescribe('#{each_class}'\) do\n  it(\"create new project\") do\n  expect().to(eq())\n   end\nend") }
+      File.open("spec/#{each_class}_spec.rb", 'w') { |file| file.write("require 'spec_helper'\n\ndescribe('#{each_class}'\) do\n  it(\"What you are testing\") do\n    expect().to(eq())\n  end\nend") }
       File.open('spec/spec_helper.rb', 'a') { |f|
   f.puts "require '#{each_class}'"}
-      File.open("app.rb", 'a') { |file| file.puts("require('#{each_class}')")}
+      File.open("app.rb", 'a') { |file| file.puts("require('#{each_class}')\n")}
     end
-    File.open("spec/spec_helper.rb", 'w') {|file| file.write("RSpec.configure do |config|\n  config.after(:each) do\n   Task.all().each() do |task|\n  task.destroy()\n      end\n  end\nend")}
+
+    File.open("spec/spec_helper.rb", 'a') {|file| file.puts("\nRSpec.configure do |config|\n  config.after(:each) do\n")}
+
+    @classes.each do |each_class|
+      File.open("spec/spec_helper.rb", 'a') {|file| file.puts("    #{each_class.capitalize}.all().each() do |#{each_class.downcase}|\n      #{each_class.downcase}.destroy()\n    end\n  end\n")}
+    end
+    File.open("spec/spec_helper.rb", 'a') {|file| file.puts("end")}
+
+
+
+    File.open("app.rb", 'a') { |file| file.puts(
+      "\n\nget('/') do\n  erb:index\nend\n\npost('/') do\n  erb:index\nend")}
+
   end
 end
 
